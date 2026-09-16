@@ -123,11 +123,11 @@ INSERT INTO AttractionContact (Contact_Name, Contact_Phone, Contact_Email, Attra
 ('Elmien Roux','0836547890','elmien@sbwines.co.za',2);
 
 INSERT INTO Tourist (First_Name, Last_Name, Email, Phone, Password_Hash) VALUES
-('Johnny','Depp','johnny.depp@example.com','0741234567','HASHED_PW_1');
+('Johnny','Depp','johnny.depp@example.com','0741234567','4b385df5630c6c24a7b7994f8ff9e672c763dc8ccf645a080a8a6145ecf92ae3');
 
 INSERT INTO SystemUser (Username, Password_Hash, Role) VALUES
-('admin1','HASHED_PW_ADMIN','Administrator'),
-('assist1','HASHED_PW_ASSIST','Assistant');
+('admin1','e86f78a8a3caf0b60d8e74e5942aa6d86dc150cd3c03338aef25b7d2d7e3acc7','Administrator'),
+('assist1','ea2f22d3e9a550763208911a65cdc7efdc03812df0bbe6944ab7c30c76827727','Assistant');
 GO
 
 UPDATE Attraction SET Price = 900.00 WHERE Attraction_ID = 1;
