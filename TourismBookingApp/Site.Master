@@ -1,0 +1,55 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="TourismBookingApp.SiteMaster" %>
+<%@ Register TagPrefix="uc" TagName="Chatbot" Src="~/Controls/Chatbot.ascx" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Tourism Management and Booking System</title>
+    <link rel="stylesheet" href="Content/site.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="topnav">
+            <a href="Home.aspx">Home</a>
+            <asp:PlaceHolder ID="phAdminOnly" runat="server">
+                <a href="MaintainTown.aspx">Towns</a>
+                <a href="MaintainBusiness.aspx">Businesses</a>
+                <a href="MaintainTourist.aspx">Tourists</a>
+                <a href="MaintainSystemUser.aspx">Staff Accounts</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phStaff" runat="server">
+                <a href="MaintainAttraction.aspx">Attractions</a>
+                <a href="MaintainAttractionContact.aspx">Attraction Contacts</a>
+                <a href="Reports.aspx">Reports</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phLoggedIn" runat="server">
+                <a href="MakeBooking.aspx">Explore Attractions</a>
+                <a href="ManageBookings.aspx">My Bookings</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phReviewsNav" runat="server">
+                <a href="MaintainReview.aspx">My Reviews</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phTouristOnly" runat="server">
+                <a href="MyProfile.aspx">My Profile</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phGuest" runat="server">
+                <a href="Login.aspx">Login</a>
+                <a href="Register.aspx">Sign Up</a>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="phLoggedInOnly" runat="server">
+                <a href="Logout.aspx">Logout</a>
+            </asp:PlaceHolder>
+            <span id="lblUser" runat="server" class="userTag"></span>
+        </div>
+
+        <div class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <!-- Free, self-hosted rule-based Help Chatbot (Section 10 requirement) -->
+        <script>
+            window.chatbotUserRole = "<%= Session["Role"] != null ? Session["Role"].ToString() : "guest" %>";
+        </script>
+        <uc:Chatbot runat="server" ID="HelpChatbot" />
+    </form>
+</body>
+</html>
