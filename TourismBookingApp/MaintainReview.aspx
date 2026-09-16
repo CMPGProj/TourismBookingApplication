@@ -1,4 +1,4 @@
-<%@ Page Title="My Reviews" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MaintainReview.aspx.cs" Inherits="TourismBookingApp.MaintainReview" %>
+﻿<%@ Page Title="My Reviews" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MaintainReview.aspx.cs" Inherits="TourismBookingApp.MaintainReview" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:Panel ID="pnlTouristView" runat="server" Visible="false">
@@ -12,7 +12,7 @@
                         <asp:BoundField DataField="Review_Date" HeaderText="Date" DataFormatString="{0:d MMM yyyy}" />
                         <asp:BoundField DataField="Attraction_Name" HeaderText="Attraction" />
                         <asp:TemplateField HeaderText="Rating">
-                            <ItemTemplate><span class="starRating"><%# new string('', Convert.ToInt32(Eval("Rating"))) %></span></ItemTemplate>
+                            <ItemTemplate><span class="starRating"><%# new string('★', Convert.ToInt32(Eval("Rating"))) %></span></ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
@@ -60,7 +60,7 @@
                 <asp:BoundField DataField="Attraction_Name" HeaderText="Attraction" />
                 <asp:BoundField DataField="Tourist_Name" HeaderText="Tourist" />
                 <asp:TemplateField HeaderText="Rating">
-                    <ItemTemplate><span class="starRating"><%# new string('', Convert.ToInt32(Eval("Rating"))) %></span></ItemTemplate>
+                    <ItemTemplate><span class="starRating"><%# new string('★', Convert.ToInt32(Eval("Rating"))) %></span></ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="Comment" HeaderText="Comment" />
                 <asp:BoundField DataField="Review_Date" HeaderText="Date" DataFormatString="{0:d}" />
