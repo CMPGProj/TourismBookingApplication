@@ -1,4 +1,4 @@
-IF DB_ID('TourismBookingDB') IS NULL
+﻿IF DB_ID('TourismBookingDB') IS NULL
     CREATE DATABASE TourismBookingDB;
 GO
 USE TourismBookingDB;
@@ -19,7 +19,7 @@ CREATE TABLE Business (
     Town_ID         INT NOT NULL,
     CONSTRAINT FK_Business_Town FOREIGN KEY (Town_ID)
         REFERENCES Town(Town_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE Attraction (
@@ -32,10 +32,10 @@ CREATE TABLE Attraction (
     Town_ID         INT NOT NULL,
     CONSTRAINT FK_Attraction_Business FOREIGN KEY (Business_ID)
         REFERENCES Business(Business_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+        ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT FK_Attraction_Town FOREIGN KEY (Town_ID)
         REFERENCES Town(Town_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE AttractionContact (
@@ -46,7 +46,7 @@ CREATE TABLE AttractionContact (
     Attraction_ID  INT NOT NULL,
     CONSTRAINT FK_Contact_Attraction FOREIGN KEY (Attraction_ID)
         REFERENCES Attraction(Attraction_ID)
-        ON UPDATE CASCADE ON DELETE CASCADE
+        ON UPDATE NO ACTION ON DELETE CASCADE
 );
 
 CREATE TABLE Tourist (
@@ -70,10 +70,10 @@ CREATE TABLE Booking (
     Attended_YN     CHAR(1) NOT NULL DEFAULT 'N' CHECK (Attended_YN IN ('Y','N')),
     CONSTRAINT FK_Booking_Tourist FOREIGN KEY (Tourist_ID)
         REFERENCES Tourist(Tourist_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+        ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT FK_Booking_Attraction FOREIGN KEY (Attraction_ID)
         REFERENCES Attraction(Attraction_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 GO
 
@@ -90,13 +90,13 @@ CREATE TABLE Review (
     Review_Date   DATE NOT NULL DEFAULT GETDATE(),
     CONSTRAINT FK_Review_Booking FOREIGN KEY (Booking_ID)
         REFERENCES Booking(Booking_ID)
-        ON UPDATE CASCADE ON DELETE CASCADE,
+        ON UPDATE NO ACTION ON DELETE CASCADE,
     CONSTRAINT FK_Review_Tourist FOREIGN KEY (Tourist_ID)
         REFERENCES Tourist(Tourist_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+        ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT FK_Review_Attraction FOREIGN KEY (Attraction_ID)
         REFERENCES Attraction(Attraction_ID)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE SystemUser (
